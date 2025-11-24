@@ -2,8 +2,10 @@ services:
   - type: worker
     name: telegram-cash-bot
     runtime: python
+    envVars:
+      PYTHON_VERSION: 3.11.9
     buildCommand: |
-      python3 -m venv venv
+      python -m venv venv
       . venv/bin/activate
       pip install --upgrade pip
       pip install -r requirements.txt
@@ -11,3 +13,4 @@ services:
       . venv/bin/activate
       python app.py
     plan: free
+
