@@ -2,7 +2,14 @@ services:
   - type: worker
     name: telegram-cash-bot
     runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python bot.py
+    buildCommand: |
+      python -m venv venv
+      source venv/bin/activate
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: |
+      source venv/bin/activate
+      python bot.py
     plan: free
+
 
