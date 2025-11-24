@@ -1,16 +1,8 @@
 services:
   - type: worker
     name: telegram-cash-bot
-    runtime: python
-    envVars:
-      PYTHON_VERSION: 3.11.9
-    buildCommand: |
-      python -m venv venv
-      . venv/bin/activate
-      pip install --upgrade pip
-      pip install -r requirements.txt
-    startCommand: |
-      . venv/bin/activate
-      python app.py
     plan: free
-
+    envVars:
+      TOKEN: 8467867383:AAGrCYHbRJqxZwPm2rS8YCjb5Wf_ulLVG_o
+    buildCommand: docker build -t bot .
+    startCommand: docker run bot
